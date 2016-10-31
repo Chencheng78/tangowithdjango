@@ -7,7 +7,9 @@ def index(request):
 	#html= "Rango says hey!" + '<br><a href="/rango/about/">Go to About</a>'
 	#context_dict = {'boldmessage': "Crunchy, creamy, cookie, candy, cupcake!"}
 	category_list = Category.objects.order_by("-likes")[:5]
-	context_dict = {'categories': category_list}
+	page_list = Page.objects.order_by('-views')[:5]
+	context_dict = {'categories': category_list,'pages':page_list}
+
 	return  render(request, 'rango/index.html',context=context_dict)
 def about(request):
 	#html = "Welcome to the about Page!" + '<br><a href="/rango/">Back to Rango</a>'

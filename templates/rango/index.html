@@ -12,6 +12,7 @@
         hey there partner! <br />
       <!--  <strong>{{boldmessage}}</strong><br /> -->
     </div>
+    <h2>Most Liked Categories</h2>
     <div>
         {% if categories %}
         <ul>
@@ -25,9 +26,22 @@
             <strong> There are no categories present</strong>
         {% endif %}
     </div>
-
+    <h2>Most Viewed Pages</h2>
     <div>
-        <a href="/rango/about">About</a><br />
+        {% if pages %}
+        <ul>
+            {% for p in pages %}
+                <li>
+                    <a href="{{p.url}}">{{p.title}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {%else%}
+            <strong> There are no pages prensent</strong>
+        {% endif %}
+    </div>
+    <div>
+        <a href="/rango/about">About Django</a><br />
         <img src="{% static "images/a.jpg" %}"
             alt="Picture of rango" />
     </div>
