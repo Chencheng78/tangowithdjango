@@ -20,6 +20,15 @@ class Page(models.Model):
 	title = models.CharField(max_length=128)
 	url = models.URLField()
 	views = models.IntegerField(default=0)
+	def clean(self):
+		cleaned_data = self.cleaned_data
+		url = cleaned_data.get('url')
+
+		if url and not url.startwith('http://'):
+			url = 'http://' + url
+			cleaned_data['url'] = url
+
+		return cleaned_data
 
 	def __str__(self):
 		return self.title
