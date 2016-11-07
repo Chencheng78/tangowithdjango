@@ -7,9 +7,14 @@
     <title>Rango</title>
 </head>
 <body>
-    <h1>Rango says...</h1>
+{% if user.is_authenticated %}
+    <h1>Rango says...hello {{user.username}}!</h1>
+{% else %}
+    <h1>Rango says...hello world!</h1>
+{% endif%}
     <div>
         hey there partner! <br />
+        <a href="/rango/login/">User Login</a> <br>
         <a href="/rango/register/">Register here</a>
       <!--  <strong>{{boldmessage}}</strong><br /> -->
     </div>
